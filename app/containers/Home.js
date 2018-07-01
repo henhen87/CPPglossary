@@ -22,14 +22,15 @@ class Home extends Component {
 	}
 
 	render () {
+		let text = this.state.text ? this.state.text.split('~') : null;
 		return (
 			<div id="home">
-				Hello Elena
+				<h2>Elena</h2>
 				<hr/>
 				<hr/>
-				{this.state.text 
+				{text 
 					? (
-						<div>{this.state.text}</div>
+						<div>{text.map((e, i) => <div key={i}>{e}</div>)}</div>
 					) : null
 				}
 			</div>

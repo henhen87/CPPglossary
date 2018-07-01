@@ -1,7 +1,7 @@
-Overloaded Functions:
--	Overloaded functions can be declared with the same name and not throw an error. To achieve this, pass a different set of parameters to the functions with the same name.
+~Overloaded Functions:
+-	Overloaded functions can be declared with the same name and not throw an error. To achieve this, pass a different set of parameters to the functions with the same name.%
 
-Preprocessor Directive: 
+~Preprocessor Directive: 
 	+These are the things that start with the # sign such as #incluce, #define, #ifndef, #endif
 	+ The preprocessors read the program before it is compiled and only executes the lines 
 	  beginning with the # sign. Think of them as code that "sets up" your source code for
@@ -78,9 +78,9 @@ Preprocessor Directive:
 						void view();
 						Customer operator= (const Customer&);
 				};
-				#endif
+				#endif%
 			   
-- using namespace std:
+~- using namespace std:
 	+ This is actually split into 3 parts
 		1) The "using" part means to use this or whatever is after it whenever it can.
 
@@ -120,23 +120,23 @@ Preprocessor Directive:
 		   namespace are many things already inside of it such as cout, cin etc.
 		   So without having the line "using namespace std" you would have to write every-
 		   thing in this name space with the :: such as std::cout, std::cin etc. But
-		   if "using namespace std" is included you can just write cout << or cin >>
+		   if "using namespace std" is included you can just write cout << or cin >>%
 
-Memberwise Assignment:
--	Memberwise assignment is the assignment of data from one object to another. This is possible through the default copy constructor. 
+~Memberwise Assignment:
+-	Memberwise assignment is the assignment of data from one object to another. This is possible through the default copy constructor.%
 
 SomeClass a(1, 2), b(4, 3);
 b = a; //memberwise assignment.
-Default Copy Constructor:
--	When doing memberwise assignment, if a programmer defined copy constructor is not defined, the compiler calls the default copy constructor. This default copy constructor will assign the data of one object to another using memberwise assignment. It is okay to rely on the default copy constructor when there are no members of an object that are pointers. If a pointer is a member of an object, then a programmer defined copy constructor must be used, otherwise it will lead to errors such as when a destructor is called, since both pointers will point to the same location in memory.
-Programmer Defined Copy Constructor:
+~Default Copy Constructor:
+-	When doing memberwise assignment, if a programmer defined copy constructor is not defined, the compiler calls the default copy constructor. This default copy constructor will assign the data of one object to another using memberwise assignment. It is okay to rely on the default copy constructor when there are no members of an object that are pointers. If a pointer is a member of an object, then a programmer defined copy constructor must be used, otherwise it will lead to errors such as when a destructor is called, since both pointers will point to the same location in memory.%
+~Programmer Defined Copy Constructor:
 -	A programmer defined copy constructor is necessary when memberwise assignment occurs between two objects and the object has a pointer as one of its members. A programmer defined copy constructor must only have one parameter and must be a reference to the object. 
 SomeClass::SomeClass(SomeClass &obj)
 {
 	someMember = obj.someMember;
 }
 -	Programmer defined copy constructors are also called whenever an object is being passed as a parameter or when an object is a return type from a function. For this reason, it is very important to have the parameter of the copy constructor to be of reference and not value.
-
+%
 Convert Constructor:
 -	………
 		

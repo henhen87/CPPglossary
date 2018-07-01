@@ -35,7 +35,7 @@ gulp.task('watch-less', function(cb) {
 		return gulp.src(e.path)
 			.pipe(less())
 			.pipe(postcss([ autoprefixer() ]))
-			.pipe(gulp.dest('./public/css'))
+			.pipe(gulp.dest('./public/css/index'))
 			.pipe(browserSync.reload({
 			    stream: true
 		    }))
