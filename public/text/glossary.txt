@@ -1,0 +1,142 @@
+Overloaded Functions:
+-	Overloaded functions can be declared with the same name and not throw an error. To achieve this, pass a different set of parameters to the functions with the same name.
+
+Preprocessor Directive: 
+	+These are the things that start with the # sign such as #incluce, #define, #ifndef, #endif
+	+ The preprocessors read the program before it is compiled and only executes the lines 
+	  beginning with the # sign. Think of them as code that "sets up" your source code for
+	  the compiler.
+	+ It is basically importing third party code into your program
+		* Types of Preprocessors:
+			- The #include directive causes the preprocessor to include the contents
+			  of another file in the program. To compare, this is like "require" in 
+			  NodeJS or "Import" (es6). #include <iostream> is importing code that is 
+			  required if the program takes in inputs from the keyboard or outputs 
+			  to the screen. (cout<< and cin>>)
+			- #define pre. directive is an older style C method of creating
+			  named constants. It is preferred to use the "const" modifier but
+			  this directive has other uses. 
+			  The difference between the named constant directive (#define) and the
+			  "const" keyword is that the const keyword is a variable and has a type
+			  such as an "int" and they have a specific storage location in memory.
+		  	  They are like regular variables in every way except the value cannot
+		  	  be changed while the program is running.
+			  A name constant is defined like so:
+			  #define Name_Of_Constant someValue
+			  Whenever the Name_Of_Constant named constant is used in the program
+			  it will be replaced by its value when it is being compiled. Also,
+			  unlike the varible keyword  "const", named constants are not variables
+			  but instead are text substitutions. When the program is being compiled,
+			  the text name of the named constant is replaced by the value
+			  #Example
+			  //This example calculates the area of a circle which is PI multiplied
+			  //by the radius squared.
+			  #include <isostream>
+			  #include <cmath>   //Needed for the pow (power) function
+			  using namespace std;
+			  #define PI 3.14159
+			  int main()
+			  {
+			  	double area, radius;
+				
+				cout << "This programs calculates the radius of a circle.\n";
+				cout << "What is the radius of the circle?\n";
+				cin >> radius;
+				
+				area = PI * pow(radius, 2);
+				cout << "The area is " << area << endl;
+				return 0;
+			  }
+			- #ifndef (if not defined). This directive is known as an "include guard"
+			  This will prevent the header file from accidentally being included 
+			  multiple times. An example would be if the main program file includes
+			  a header file and the header file also includes a second header file.
+			  If the main program by chance included the same second header file defined
+			  in the original/first header file, the guard will prevent it from being 
+			  processed twice. 
+			  It is used to determine whether or not a specific constant has already
+			  been defined with a #define directive. When Someclass.h file is being 
+			  compiled, the #ifndef directive will check for a constant named,
+			  SOMECLASS_H. If this constant has not yet been defined, it is immediately
+			  defined with the #define SOMECLASS_H. If the constant (SOMECLASS_H) has
+			  already been defined (for example in the header file itself) it means
+			  it is already included. This is when the guard will do its job and skip
+			  everything between the #ifndef and #endif directives. The #ifndef and 
+			  #endif constants should always be all capital.
+				*Example:
+				#ifndef CUSTOMER_H
+				#define CUSTOMER_H
+				#include "stdafx.h"
+
+				class Customer {
+					private: 
+						string accountID;
+						string name;
+					public:
+						Customer();
+						Customer(string, string);
+						void view();
+						Customer operator= (const Customer&);
+				};
+				#endif
+			   
+- using namespace std:
+	+ This is actually split into 3 parts
+		1) The "using" part means to use this or whatever is after it whenever it can.
+
+		2) The primary purpose of the "namespace" is to not have duplicate variables,
+		   functions, classes etc with the same name. For example, if a program were
+		   to include 2 libraries that have the same function name called "print()". The 
+		   namespace is similar to adding a new group name to which you can add functions,
+		   and other data so it can be distinguishable. 
+		   *Example:
+                   namespace ExampleOne 
+		   {
+			void print()
+			{
+				//DO stuff
+			}
+	   	   }
+		   namespace ExampleTwo 
+		   {
+			void print()
+			{
+				//DO stuff
+			}
+	   	   }
+		   With this configuartion, there will not be any naming conflicts and each of the 
+		   functions can be called like so: ExampleOne::print() ExampleTwo::print();
+		   Also, instead of importing everything in the STD namespace, only specific things 
+	 	   in the name space can be imported like so: 
+		   using std::string;
+		   using std::cout;
+		   using std::cin;
+		   using std::endl;
+		   using std::vector;
+
+		3) std is an abbreviation for standard and is the name of the namespace. In the 
+		   example, the names of the namespace were ExampleOne and ExampleTwo. In
+		   "using namespace std", "std" is the name of the namespace and inside this 
+		   namespace are many things already inside of it such as cout, cin etc.
+		   So without having the line "using namespace std" you would have to write every-
+		   thing in this name space with the :: such as std::cout, std::cin etc. But
+		   if "using namespace std" is included you can just write cout << or cin >>
+
+Memberwise Assignment:
+-	Memberwise assignment is the assignment of data from one object to another. This is possible through the default copy constructor. 
+
+SomeClass a(1, 2), b(4, 3);
+b = a; //memberwise assignment.
+Default Copy Constructor:
+-	When doing memberwise assignment, if a programmer defined copy constructor is not defined, the compiler calls the default copy constructor. This default copy constructor will assign the data of one object to another using memberwise assignment. It is okay to rely on the default copy constructor when there are no members of an object that are pointers. If a pointer is a member of an object, then a programmer defined copy constructor must be used, otherwise it will lead to errors such as when a destructor is called, since both pointers will point to the same location in memory.
+Programmer Defined Copy Constructor:
+-	A programmer defined copy constructor is necessary when memberwise assignment occurs between two objects and the object has a pointer as one of its members. A programmer defined copy constructor must only have one parameter and must be a reference to the object. 
+SomeClass::SomeClass(SomeClass &obj)
+{
+	someMember = obj.someMember;
+}
+-	Programmer defined copy constructors are also called whenever an object is being passed as a parameter or when an object is a return type from a function. For this reason, it is very important to have the parameter of the copy constructor to be of reference and not value.
+
+Convert Constructor:
+-	………
+		
