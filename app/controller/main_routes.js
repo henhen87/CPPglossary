@@ -10,15 +10,12 @@ module.exports = function (app) {
 				if (err){
 					console.log('Read Error', err);
 				}
-
-				console.log('READ data', data);
 				res.json(data);
 			});
 		});
 
 	app.route('/home')
 		.get(function(req, res, next) {
-			console.log('INSIDE HOME')
 			res.sendFile(path.join(__dirname + '/../..', 'public', "index.html"));	
 		});
 }

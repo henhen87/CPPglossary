@@ -23,16 +23,31 @@ class Home extends Component {
 
 	render () {
 		let text = this.state.text ? this.state.text.split('~') : null;
+		let terms = [];
+		let el = [];
+		if (text) {
+			for (let x = 0; x < text.length; x++) {
+				terms.push(text[x].slice(0, text[x].indexOf('^')));
+				console.log('text', text[x]);
+				// text[x] = text[x].replace('^', ':');
+				el.push(
+					<div key={x}>
+						<strong>{text[x].substr(0, text[x].indexOf('^'))}</strong><br/>
+						<p>{text[x].replace(text[x].substr(0, text[x].indexOf('^') + 1), '')}</p>
+					</div>
+				)
+			}
+			// for (let y = 0; y < text.length)
+		}
 		return (
 			<div id="home">
 				<h2>Elena</h2>
 				<hr/>
-				<hr/>
-				{text 
-					? (
-						<div>{text.map((e, i) => <div key={i}>{e}</div>)}</div>
-					) : null
+				{terms 
+					? (terms.map((e, i) => <div key={i}>{e}</div>)) : null
 				}
+				<hr/>
+				{el}
 			</div>
 		);
 	}
