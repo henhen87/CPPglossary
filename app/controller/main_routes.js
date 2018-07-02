@@ -1,4 +1,5 @@
 var fs = require('fs');
+var beautify = require('js-beautify').js_beautify
 
 module.exports = function (app) {
 	var path = require('path');
@@ -10,6 +11,7 @@ module.exports = function (app) {
 				if (err){
 					console.log('Read Error', err);
 				}
+				console.log('BEUTIFY', beautify(data, {indent_size: 4}));
 				res.json(data);
 			});
 		});

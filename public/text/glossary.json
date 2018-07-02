@@ -1,0 +1,23 @@
+[
+	{
+		"h": "Overloaded_Functions", 
+		"body": [
+			"Overloaded functions can be declared with the same name and not throw an error. To achieve this, pass a different set of parameters to the functions with the same name."
+		]
+	},
+	{
+		"h": "Preprocessor_Directive", 
+		"body": [
+			"These are the declarations that start with the # sign such as #incluce, #define, #ifndef, #endif",
+			"The preprocessors read the program before it is compiled and only executes the lines beginning with the # sign. Think of them as code that 'sets up' your source code for the compiler.",
+			"It is basically importing third party code into your program"
+		],
+		"sub": {
+			"h": "Types of Preprocessors",
+			"body": [
+				"The #include directive causes the preprocessor to include the contents of another file in the program. To compare, this is like 'require' in NodeJS or 'Import' (es6). #include <iostream> is importing code that is required if the program takes in inputs from the keyboard or outputs to the screen. (cout<< and cin>>)"
+			]
+		}
+
+	}
+]

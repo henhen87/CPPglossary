@@ -37,11 +37,10 @@ class Home extends Component {
 					</div>
 				)
 			}
-			// for (let y = 0; y < text.length)
 		}
 		return (
 			<div id="home">
-				<h2>Elena</h2>
+				<h2>word</h2>
 				<hr/>
 				{terms 
 					? (terms.map((e, i) => <div key={i}>{e}</div>)) : null

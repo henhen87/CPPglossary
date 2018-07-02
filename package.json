@@ -16,7 +16,7 @@
     "url": "https://github.com/henhen87/CPPglossary/issues"
   },
   "homepage": "https://github.com/henhen87/CPPglossary#readme",
-    "devDependencies": {
+  "devDependencies": {
     "autoprefixer": "^7.1.5",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -45,6 +45,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.15.4",
     "express-session": "^1.15.5",
+    "js-beautify": "^1.7.5",
     "react": "^16.0.0",
     "react-addons-update": "^15.6.2",
     "react-dom": "^16.0.0",
