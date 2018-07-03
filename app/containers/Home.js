@@ -33,7 +33,7 @@ class Home extends Component {
 				el.push(
 					<div key={x}>
 						<strong>{text[x].substr(0, text[x].indexOf('^'))}</strong><br/>
-						<p>{text[x].replace(text[x].substr(0, text[x].indexOf('^') + 1), '')}</p>
+						<pre>{text[x].replace(text[x].substr(0, text[x].indexOf('^') + 1), '')}</pre>
 					</div>
 				)
 			}

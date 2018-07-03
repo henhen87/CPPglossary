@@ -11,8 +11,8 @@ module.exports = function (app) {
 				if (err){
 					console.log('Read Error', err);
 				}
-				console.log('BEUTIFY', beautify(data, {indent_size: 4}));
-				res.json(data);
+				console.log('BEUTIFY', beautify(data, {indent_size: 2}));
+				res.send(data);
 			});
 		});
 

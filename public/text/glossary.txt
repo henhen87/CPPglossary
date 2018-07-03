@@ -1,5 +1,6 @@
 ~Overloaded Functions^
-	+ Overloaded functions can be declared with the same name and not throw an error. To achieve this, pass a different set of parameters to the functions with the same name.%
+	+ Overloaded functions can be declared with the same name and not throw an error. To achieve this, 
+	  pass a different set of parameters to the functions with the same name.%
 
 ~Preprocessor Directive^ 
 	+ These are the declarations that start with the # sign such as #incluce, #define, #ifndef, #endif
@@ -81,13 +82,11 @@
 				#endif%
 			   
 ~using namespace std^
-	+ The "using" part means to use this or whatever is after it whenever it can. The primary purpose of the "namespace" is to not have duplicate variables,
-		   functions, classes etc with the same name. For example, if a program were
-		   to include 2 libraries that have the same function name called "print()". The 
-		   namespace is similar to adding a new group name to which you can add functions,
-		   and other data so it can be distinguishable. 
+	+ The "using" part means to use this or whatever is after it whenever it can. The primary purpose of the "namespace" 
+	  is to not have duplicate variables, functions, classes etc with the same name. For example, if a program were
+	  to include 2 libraries that have the same function name called "print()". The namespace is similar to adding a new 
+	  group name to which you can add functions, and other data so it can be distinguishable. 
 		   *Example:
-		   >block<
                    namespace ExampleOne 
 		   {
 			void print()
@@ -102,7 +101,6 @@
 				//DO stuff
 			}
 	   	   }
-		   >endblock<
 		   With this configuartion, there will not be any naming conflicts and each of the 
 		   functions can be called like so: ExampleOne::print() ExampleTwo::print();
 		   Also, instead of importing everything in the STD namespace, only specific things 
