@@ -29,25 +29,28 @@
 			  unlike the varible keyword  "const", named constants are not variables
 			  but instead are text substitutions. When the program is being compiled,
 			  the text name of the named constant is replaced by the value
-			  #Example
-			  //This example calculates the area of a circle which is PI multiplied
-			  //by the radius squared.
-			  #include <isostream>
-			  #include <cmath>   //Needed for the pow (power) function
-			  using namespace std;
-			  #define PI 3.14159
-			  int main()
-			  {
-			  	double area, radius;
+			  
+				Example:
+			  		//This example calculates the area of a circle which is PI multiplied
+			  		//by the radius squared.
+			  		#include <isostream>
+			  		#include <cmath>   //Needed for the pow (power) function
+			  		using namespace std;
+			  		#define PI 3.14159
+			  		
+					int main()
+			  		{
+			  			double area, radius;
 				
-				cout << "This programs calculates the radius of a circle.\n";
-				cout << "What is the radius of the circle?\n";
-				cin >> radius;
+						cout << "This programs calculates the radius of a circle.\n";
+						cout << "What is the radius of the circle?\n";
+						cin >> radius;
 				
-				area = PI * pow(radius, 2);
-				cout << "The area is " << area << endl;
-				return 0;
-			  }
+						area = PI * pow(radius, 2);
+						cout << "The area is " << area << endl;
+						return 0;
+			  		}
+
 			- #ifndef (if not defined). This directive is known as an "include guard"
 			  This will prevent the header file from accidentally being included 
 			  multiple times. An example would be if the main program file includes
@@ -64,54 +67,58 @@
 			  it is already included. This is when the guard will do its job and skip
 			  everything between the #ifndef and #endif directives. The #ifndef and 
 			  #endif constants should always be all capital.
-				*Example:
-				#ifndef CUSTOMER_H
-				#define CUSTOMER_H
-				#include "stdafx.h"
+				
+				Example:
+					#ifndef CUSTOMER_H
+					#define CUSTOMER_H
+					#include "stdafx.h"
 
-				class Customer {
-					private: 
-						string accountID;
-						string name;
-					public:
-						Customer();
-						Customer(string, string);
-						void view();
-						Customer operator= (const Customer&);
-				};
-				#endif%
+					class Customer {
+						private: 
+							string accountID;
+							string name;
+						public:
+							Customer();
+							Customer(string, string);
+							void view();
+							Customer operator= (const Customer&);
+					};
+					#endif%
 			   
 ~using namespace std^
 	+ The "using" part means to use this or whatever is after it whenever it can. The primary purpose of the "namespace" 
 	  is to not have duplicate variables, functions, classes etc with the same name. For example, if a program were
 	  to include 2 libraries that have the same function name called "print()". The namespace is similar to adding a new 
 	  group name to which you can add functions, and other data so it can be distinguishable. 
-		   *Example:
-                   namespace ExampleOne 
-		   {
-			void print()
-			{
-				//DO stuff
-			}
-	   	   }
-		   namespace ExampleTwo 
-		   {
-			void print()
-			{
-				//DO stuff
-			}
-	   	   }
+		   
+				Example:
+                   			namespace ExampleOne 
+		   			{
+						void print()
+						{
+							//DO stuff
+						}
+	   	   			}
+		   			namespace ExampleTwo 
+		   			{
+						void print()
+						{
+							//DO stuff
+						}
+	   	   			}	
+
 		   With this configuartion, there will not be any naming conflicts and each of the 
 		   functions can be called like so: ExampleOne::print() ExampleTwo::print();
 		   Also, instead of importing everything in the STD namespace, only specific things 
 	 	   in the name space can be imported like so:
-		   >block< 
-		   using std::string;
-		   using std::cout;
-		   using std::cin;
-		   using std::endl;
-		   using std::vector;
-		   >endblock<
+		
+		   		Example:
+		   			using std::string;
+		   			using std::cout;
+		   			using std::cin;
+		   			using std::endl;
+		   			using std::vector;
+
 		   std is an abbreviation for standard and is the name of the namespace. In the 
 		   example, the names of the namespace were ExampleOne and ExampleTwo. In
 		   "using namespace std", "std" is the name of the namespace and inside this 
@@ -121,23 +128,36 @@
 		   if "using namespace std" is included you can just write cout << or cin >>%
 
 ~Memberwise Assignment^
-	-	Memberwise assignment is the assignment of data from one object to another. This is possible through the default copy constructor.%
-		>block<
-		SomeClass a(1, 2), b(4, 3);
-		b = a; //memberwise assignment.
-		>endblock<
+	-	Memberwise assignment is the assignment of data from one object to another. This is possible through the default copy constructor.
+		
+				Example:
+					SomeClass a(1, 2), b(4, 3);
+					b = a; //memberwise assignment.
+
 ~Default Copy Constructor^
 	-	When doing memberwise assignment, if a programmer defined copy constructor is not defined, the compiler calls the default copy constructor. This default copy constructor will assign the data of one object to another using memberwise assignment. It is okay to rely on the default copy constructor when there are no members of an object that are pointers. If a pointer is a member of an object, then a programmer defined copy constructor must be used, otherwise it will lead to errors such as when a destructor is called, since both pointers will point to the same location in memory.%
 ~Programmer Defined Copy Constructor^
 	-	A programmer defined copy constructor is necessary when memberwise assignment occurs between two objects and the object has a pointer as one of its members. A programmer defined copy constructor must only have one parameter and must be a reference to the object. 
-		>block<
-		SomeClass::SomeClass(SomeClass &obj)
-		{
-			someMember = obj.someMember;
-		}
-		>endblock<
+		
+				Example:
+					SomeClass::SomeClass(SomeClass &obj)
+					{
+						someMember = obj.someMember;
+					}
+		
 	-	Programmer defined copy constructors are also called whenever an object is being passed as a parameter or when an object is a return type from a function. For this reason, it is very important to have the parameter of the copy constructor to be of reference and not value.
-%
+
+~Pointers^ 
+	-	A pointer is the address of a variable in memory. A value that represents the address of a memory location, or holds the address of some variable, is a pointer.
+	-	A pointer variable, or known as just a pointer, is a variable that stores an address. Pointers must also have a type to them and can only strictly point to the same type.
+				
+				Example:
+					int *ptr; //can only point to a variable address of type int
+					int someVar = 7;
+					int *ptr;
+					ptr = &someVar; //It is important to have the & ampersand in front of the variable.
+
+
 Convert Constructor:
 -	………
 		
