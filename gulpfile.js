@@ -31,24 +31,24 @@ gulp.task('build-js', function() {
 });
 
 gulp.task('watch-less', function(cb) {
-	return watch(['./app/views/less/**/*.less'], function(e) {
+	return watch(['./app/views/less/index.less'], function(e) {
 		return gulp.src(e.path)
 			.pipe(less())
 			.pipe(postcss([ autoprefixer() ]))
-			.pipe(gulp.dest('./public/css/index'))
+			.pipe(gulp.dest('./public/css'))
 			.pipe(browserSync.reload({
 			    stream: true
 		    }))
 	});
 });
 
-gulp.task('build-less', function(cb) {
-   return gulp.src('./app/views/less/**/*.less')
-	   .pipe(less())
-	   .pipe(cleanCSS())
-	   .pipe(postcss([ autoprefixer() ]))
-	   .pipe(gulp.dest('./public/css'))
-});
+// gulp.task('build-less', function(cb) {
+//    return gulp.src('./app/views/less/**/*.less')
+// 	   .pipe(less())
+// 	   .pipe(cleanCSS())
+// 	   .pipe(postcss([ autoprefixer() ]))
+// 	   .pipe(gulp.dest('./public/css'))
+// });
 
 gulp.task('clean', function(cb) {
 	del(['./public/js/*.js', './public/css/*.css', './public/js-dev', './public/css-dev'], cb);
@@ -58,5 +58,5 @@ gulp.task('watch', ['watch-js','watch-less']);
 gulp.task('build', ['build-js', 'build-less']);
 
 gulp.task('default', function () {
-	console.log('gulp????????????????');
+	console.log('<--No Defaults-->');
 });

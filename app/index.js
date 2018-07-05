@@ -7,7 +7,7 @@ import Home from './containers/Home';
 render(
 	<Router>
 		<Switch>
-		    <Route exact path='/home' component={Home} />
+		    <Route exact path='/' component={Home} />
 	    </Switch>
 	</Router>,
 	document.getElementById('root')

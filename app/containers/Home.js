@@ -28,8 +28,6 @@ class Home extends Component {
 		if (text) {
 			for (let x = 0; x < text.length; x++) {
 				terms.push(text[x].slice(0, text[x].indexOf('^')));
-				console.log('text', text[x]);
-				// text[x] = text[x].replace('^', ':');
 				el.push(
 					<div key={x}>
 						<strong>{text[x].substr(0, text[x].indexOf('^'))}</strong><br/>
@@ -40,7 +38,7 @@ class Home extends Component {
 		}
 		return (
 			<div id="home">
-				<h2>word</h2>
+				<h2>Elena's CPP glossary</h2>
 				<hr/>
 				{terms 
 					? (terms.map((e, i) => <div key={i}>{e}</div>)) : null
