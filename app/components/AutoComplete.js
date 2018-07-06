@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Autosuggest from 'react-autosuggest';
 
-
-// Teach Autosuggest how to calculate suggestions for any given input value.
 const getSuggestions = (value, terms) => {
 	console.log('TERMS IN GET SUGGESTIONS', terms)
 	const inputValue = value.trim().toLowerCase();
@@ -16,12 +14,8 @@ const getSuggestions = (value, terms) => {
 		);
 };
 
-// When suggestion is clicked, Autosuggest needs to populate the input
-// based on the clicked suggestion. Teach Autosuggest how to calculate the
-// input value for every given suggestion.
 const getSuggestionValue = suggestion => suggestion.text;
 
-// Use your imagination to render suggestions.
 const renderSuggestion = suggestion => {
 	console.log('SUGGESTION', suggestion)
 	return (
@@ -32,10 +26,6 @@ const renderSuggestion = suggestion => {
 }
 
 class AutoComplete extends Component {
-	// constructor(props) {
-	// 	super(props);
-
-	// }
 	state = {
 		text: null,
 		value: '',
