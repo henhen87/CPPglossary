@@ -2,48 +2,102 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Autosuggest from 'react-autosuggest';
 
-class AutoComplete extends Component {
-	constructor(props) {
-		super(props);
 
-		this.state = {
-			text: null,
-			val: '',
-			suggestions: []
-		}
+// Teach Autosuggest how to calculate suggestions for any given input value.
+const getSuggestions = (value, terms) => {
+	console.log('TERMS IN GET SUGGESTIONS', terms)
+	const inputValue = value.trim().toLowerCase();
+	const inputLength = inputValue.length;
+
+	return inputLength === 0 
+		? [] 
+		: terms.filter(term =>
+			term.text.toLowerCase().slice(0, inputLength) === inputValue
+		);
+};
+
+// When suggestion is clicked, Autosuggest needs to populate the input
+// based on the clicked suggestion. Teach Autosuggest how to calculate the
+// input value for every given suggestion.
+const getSuggestionValue = suggestion => suggestion.text;
+
+// Use your imagination to render suggestions.
+const renderSuggestion = suggestion => {
+	console.log('SUGGESTION', suggestion)
+	return (
+		<div>
+			{suggestion.text}
+		</div>
+	);
+}
+
+class AutoComplete extends Component {
+	// constructor(props) {
+	// 	super(props);
+
+	// }
+	state = {
+		text: null,
+		value: '',
+		terms: [],
+		suggestions: []
 	}
 
-	componentDidMount() {
+	componentDidMount = () => {
 		axios.get('getText').then((res) => {
 			console.log('DATA FRON', res.data);
 			this.setState({
 				text: res.data
+			}, () => {
+				let text = this.state.text ? this.state.text.split('~') : null;
+				let terms = [];
+				let el = [];
+				if (text) {
+					for (let x = 0; x < text.length; x++) {
+						terms.push({text: text[x].slice(0, text[x].indexOf('^'))});
+						el.push(
+							<div key={x}>
+								<strong>{text[x].substr(0, text[x].indexOf('^'))}</strong><br/>
+								<pre>{text[x].replace(text[x].substr(0, text[x].indexOf('^') + 1), '')}</pre>
+							</div>
+						)
+					}
+					console.log('TERMS', terms)
+					if (terms) {
+						this.setState({ terms });
+					}
+				}
 			});
 		});
 	}
 
-	onChange(event, { newValue }) {
+	onChange = (event, { newValue }) => {
 		this.setState({
 			value: newValue
 		});
 	};
 
-	render() {
-		let text = this.state.text ? this.state.text.split('~') : null;
-		let terms = [];
-		let el = [];
-		if (text) {
-			for (let x = 0; x < text.length; x++) {
-				terms.push({text: text[x].slice(0, text[x].indexOf('^'))});
-				el.push(
-					<div key={x}>
-						<strong>{text[x].substr(0, text[x].indexOf('^'))}</strong><br/>
-						<pre>{text[x].replace(text[x].substr(0, text[x].indexOf('^') + 1), '')}</pre>
-					</div>
-				)
-			}
-			console.log('TERMS', terms)
-		}
+	onSuggestionsFetchRequested = ({ value }) => {
+		console.log('TERMS IN ON SUGGESTIONS FETCH REQUESTED', this.state.terms)
+		this.setState({
+			suggestions: getSuggestions(value, this.state.terms)
+		});
+	};
+
+	// Autosuggest will call this function every time you need to clear suggestions.
+	onSuggestionsClearRequested = () => {
+		this.setState({
+			suggestions: []
+		});
+	};
+
+	render = () => {
+		const { value, suggestions } = this.state;
+		const inputProps = {
+			placeholder: 'Query Box',
+			value,
+			onChange: this.onChange
+		};
 
 		return (
 			<Autosuggest
@@ -57,3 +111,5 @@ class AutoComplete extends Component {
 		);
 	}
 }
+
+export default AutoComplete;

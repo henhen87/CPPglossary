@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AutoComplete from 'components/AutoComplete';
 
 class Home extends Component {
 	// constructor(props){
@@ -29,7 +30,7 @@ class Home extends Component {
 				<hr/>
 				<form autoComplete="off">
 					<div className="form-group search-input">
-						<input type="text"/>
+						<AutoComplete />
 					</div>
 				</form>
 			</div>
