@@ -30,7 +30,8 @@ class AutoComplete extends Component {
 		text: null,
 		value: '',
 		terms: [],
-		suggestions: []
+		suggestions: [],
+		content: []
 	}
 
 	componentDidMount = () => {
@@ -52,9 +53,12 @@ class AutoComplete extends Component {
 							</div>
 						)
 					}
-					console.log('TERMS', terms)
+
 					if (terms) {
 						this.setState({ terms });
+					}
+					if (el) {
+						this.setState({ content: el });
 					}
 				}
 			});
@@ -68,7 +72,6 @@ class AutoComplete extends Component {
 	};
 
 	onSuggestionsFetchRequested = ({ value }) => {
-		console.log('TERMS IN ON SUGGESTIONS FETCH REQUESTED', this.state.terms)
 		this.setState({
 			suggestions: getSuggestions(value, this.state.terms)
 		});
@@ -90,14 +93,17 @@ class AutoComplete extends Component {
 		};
 
 		return (
-			<Autosuggest
-				suggestions={suggestions}
-				onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-				onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-				getSuggestionValue={getSuggestionValue}
-				renderSuggestion={renderSuggestion}
-				inputProps={inputProps}
-			/>
+			<div className="form-group search-input">
+				<Autosuggest
+					suggestions={suggestions}
+					onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+					onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+					getSuggestionValue={getSuggestionValue}
+					renderSuggestion={renderSuggestion}
+					inputProps={inputProps}
+				/>
+				<button type="button">Get Definition</button>
+			</div>
 		);
 	}
 }
