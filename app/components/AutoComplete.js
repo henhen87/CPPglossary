@@ -26,17 +26,20 @@ const renderSuggestion = suggestion => {
 }
 
 class AutoComplete extends Component {
+	constructor(props) {
+		super(props);
+	}
+
 	state = {
 		text: null,
 		value: '',
 		terms: [],
 		suggestions: [],
-		content: []
+		content: [],
 	}
 
 	componentDidMount = () => {
 		axios.get('getText').then((res) => {
-			console.log('DATA FRON', res.data);
 			this.setState({
 				text: res.data
 			}, () => {
@@ -53,12 +56,12 @@ class AutoComplete extends Component {
 							</div>
 						)
 					}
-
+					console.log('ELL', el)
 					if (terms) {
 						this.setState({ terms });
 					}
 					if (el) {
-						this.setState({ content: el });
+						this.setState({ content: el }, () => console.log('STATE EL', this.state.content));
 					}
 				}
 			});
@@ -84,6 +87,17 @@ class AutoComplete extends Component {
 		});
 	};
 
+	getDefinition = () => {
+		console.log('INSIDE GET DEF', typeof this.state.value, this.state.terms)
+		for (let x = 0; x < this.state.terms.length; x++) {
+			console.log('TERMS X TEXT', this.state.terms[x].text)
+			if (this.state.terms[x].text === this.state.value) {
+				console.log('CONTENT', this.state.content[x]);
+				this.props.setDefinition(this.state.content[x]);
+			}
+		}
+	}
+
 	render = () => {
 		const { value, suggestions } = this.state;
 		const inputProps = {
@@ -102,7 +116,7 @@ class AutoComplete extends Component {
 					renderSuggestion={renderSuggestion}
 					inputProps={inputProps}
 				/>
-				<button type="button">Get Definition</button>
+				<button type="button" onClick={this.getDefinition}>Get Definition</button>
 			</div>
 		);
 	}
