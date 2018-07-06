@@ -58,6 +58,7 @@ class AutoComplete extends Component {
 					}
 					console.log('ELL', el)
 					if (terms) {
+						this.props.setTerms(terms);
 						this.setState({ terms });
 					}
 					if (el) {

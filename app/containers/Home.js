@@ -3,7 +3,13 @@ import AutoComplete from 'components/AutoComplete';
 
 class Home extends Component {
 	state = {
-		definition: ''
+		definition: '',
+		terms: []
+	}
+
+	setTerms = terms => {
+		console.log('TERMS', terms)
+		this.setState({ terms });
 	}
 
 	setDefinition = (definition) => {
@@ -16,8 +22,11 @@ class Home extends Component {
 			<div id="home">
 				<h2>Number One CPP Glossary</h2>
 				<hr/>
+				{this.state.terms ? this.state.terms.map((data, i) => 
+					<div key={i}>{data.text}</div>
+				) : null}
 				<form autoComplete="off">
-					<AutoComplete setDefinition={this.setDefinition} />
+					<AutoComplete setDefinition={this.setDefinition} setTerms={this.setTerms} />
 				</form>
 				<div>{this.state.definition}</div>
 			</div>
