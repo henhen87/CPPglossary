@@ -3,14 +3,39 @@
 		font-size: 30px;
 		color: pink;
 	}
-	div {
-		color: green;
+	section.frequent {
+		h2 {
+			color: #3d3d3d;
+			font-size: 18px;
+			text-decoration: underline;
+		}
+		.frequent-terms {
+			width: 50%;
+			display: inline-block;
+			color: blue;
+		}
+		padding: 40px 0;
 	}
-	form {
-		.form-group {
-			&.search-input {
-				position: relative;
+	section.search {
+		form {
+			.form-group {
+				button {
+					color: #FFF;
+					background-color: tomato;
+				}
+				.react-autosuggest__container {
+					input {
+						width: 100%;
+					}
+					width: 50%;
+					display: inline-block;
+				}
+				&.search-input {
+					position: relative;
+				}
 			}
 		}
+		color: green;
+		padding: 40px 0;
 	}
 }

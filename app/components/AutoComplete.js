@@ -46,18 +46,22 @@ class AutoComplete extends Component {
 				let text = this.state.text ? this.state.text.split('~') : null;
 				let terms = [];
 				let el = [];
+				console.log('TEXT SPLIT', text)
 				if (text) {
 					for (let x = 0; x < text.length; x++) {
-						terms.push({text: text[x].slice(0, text[x].indexOf('^'))});
-						el.push(
-							<div key={x}>
-								<strong>{text[x].substr(0, text[x].indexOf('^'))}</strong><br/>
-								<pre>{text[x].replace(text[x].substr(0, text[x].indexOf('^') + 1), '')}</pre>
-							</div>
-						)
+						if (text[x]) {
+							terms.push({text: text[x].slice(0, text[x].indexOf('^'))});
+							el.push(
+								<div key={x}>
+									<strong>{text[x].substr(0, text[x].indexOf('^'))}</strong><br/>
+									<pre>{text[x].replace(text[x].substr(0, text[x].indexOf('^') + 1), '')}</pre>
+								</div>
+							)
+						}
 					}
 					console.log('ELL', el)
 					if (terms) {
+						console.log('IF TERMS', terms)
 						this.props.setTerms(terms);
 						this.setState({ terms });
 					}
@@ -92,7 +96,7 @@ class AutoComplete extends Component {
 		console.log('INSIDE GET DEF', typeof this.state.value, this.state.terms)
 		for (let x = 0; x < this.state.terms.length; x++) {
 			console.log('TERMS X TEXT', this.state.terms[x].text)
-			if (this.state.terms[x].text === this.state.value) {
+			if (this.state.terms[x].text.toLowerCase() === this.state.value.toLowerCase()) {
 				console.log('CONTENT', this.state.content[x]);
 				this.props.setDefinition(this.state.content[x]);
 			}
@@ -117,7 +121,11 @@ class AutoComplete extends Component {
 					renderSuggestion={renderSuggestion}
 					inputProps={inputProps}
 				/>
-				<button type="button" onClick={this.getDefinition}>Get Definition</button>
+				<button type="submit" onClick={e => {
+					e.preventDefault();
+					this.getDefinition();
+					
+				}}>Get Definition</button>
 			</div>
 		);
 	}
