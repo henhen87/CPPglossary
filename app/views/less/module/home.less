@@ -23,14 +23,25 @@
 	}
 	section.search {
 		h2 {
-			color: #FFF;
+			color: purple;
+			font-weight: bolder;
 			font-size: 18px;
+			text-align: center;
 			text-decoration: underline;
 		}
-		.frequent-terms {
-			width: 50%;
-			display: inline-block;
-			color: #FF6347;
+		.terms {
+			.frequent-terms {
+				width: 50%;
+				float: left;
+				color: #111111;
+				font-weight: bold;
+				text-shadow: 2px 2px 2px 2px #3D3D3D;
+			}
+			width: 80%;
+			max-width: 600px;
+			margin: 20px auto 0;
+			text-align: center;
+			.clearfix;
 		}
 		form {
 			.form-group {
@@ -44,8 +55,8 @@
 					height: 80px;
 					margin: 0 auto;
 					display: block;
-					border: none;
-					box-shadow: 2px 3px 10px -1px grey;
+					border: solid thin;
+				    box-shadow: 3px 3px 57px 5px black;
 				}
 				.react-autosuggest__container {
 					.react-autosuggest__suggestions-container {
@@ -75,7 +86,7 @@
 			}
 			margin-top: 60px;
 		}
-		background-image: url(/img/purple-bg.jpg);
+		background-image: url(/img/blue-bg.jpg);
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center;

@@ -34,9 +34,11 @@ class Home extends Component {
 				<section className="search">
 					<div className="container">
 						<h2><strong>Frequently Searched Terms</strong></h2>
-						{this.state.terms ? this.state.terms.map((data, i) => 
-							<div key={i} className="frequent-terms">{data.text}</div>
-						) : null}
+						<div className="terms">
+							{this.state.terms ? this.state.terms.map((data, i) => 
+								<div key={i} className="frequent-terms">{data.text}</div>
+							) : null}
+						</div>
 						<form autoComplete="off" onSubmit={e => e.preventDefault()}>
 							<AutoComplete setDefinition={this.setDefinition} setTerms={this.setTerms} />
 						</form>
