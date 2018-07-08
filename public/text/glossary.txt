@@ -1,14 +1,17 @@
 ~Overloaded Functions^
-	+ Overloaded functions can be declared with the same name and not throw an error. To achieve this, 
-	  pass a different set of parameters to the functions with the same name.%
+	-	Overloaded functions can be declared with the same name and not throw an error. To 
+		achieve this, pass a different set of parameters to the functions with the same 
+		name.
 
 ~Preprocessor Directive^ 
-	+ These are the declarations that start with the # sign such as #incluce, #define, #ifndef, #endif
-	+ The preprocessors read the program before it is compiled and only executes the lines 
-	  beginning with the # sign. Think of them as code that "sets up" your source code for
-	  the compiler.
-	+ It is basically importing third party code into your program
-		* Types of Preprocessors:
+	-	These are the declarations that start with the # sign such as #incluce, #define, 
+		#ifndef, #endif
+	-	The preprocessors read the program before it is compiled and only executes the 
+		lines beginning with the # sign. Think of them as code that "sets up" your source 
+		code for the compiler.
+	-	It is basically importing third party code into your program
+		
+		Types of Preprocessors:
 			- The #include directive causes the preprocessor to include the contents
 			  of another file in the program. To compare, this is like "require" in 
 			  NodeJS or "Import" (es6). #include <iostream> is importing code that is 
@@ -31,9 +34,10 @@
 			  the text name of the named constant is replaced by the value
 			  
 				Example:
-			  		//This example calculates the area of a circle which is PI multiplied
-			  		//by the radius squared.
-			  		#include <isostream>
+			  		//This example calculates the area of a circle which is PI 
+					//multiplied by the radius squared.
+			  		
+					#include <isostream>
 			  		#include <cmath>   //Needed for the pow (power) function
 			  		using namespace std;
 			  		#define PI 3.14159
@@ -42,7 +46,8 @@
 			  		{
 			  			double area, radius;
 				
-						cout << "This programs calculates the radius of a circle.\n";
+						cout << "This programs calculates the radius of a \n
+							circle.\n";
 						cout << "What is the radius of the circle?\n";
 						cin >> radius;
 				
@@ -68,96 +73,164 @@
 			  everything between the #ifndef and #endif directives. The #ifndef and 
 			  #endif constants should always be all capital.
 				
-				Example:
-					#ifndef CUSTOMER_H
-					#define CUSTOMER_H
-					#include "stdafx.h"
+			Example:
+				#ifndef CUSTOMER_H
+				#define CUSTOMER_H
+				#include "stdafx.h"
 
-					class Customer {
-						private: 
-							string accountID;
-							string name;
-						public:
-							Customer();
-							Customer(string, string);
-							void view();
-							Customer operator= (const Customer&);
-					};
-					#endif%
+				class Customer {
+					private: 
+						string accountID;
+						string name;
+					public:
+						Customer();
+						Customer(string, string);
+						void view();
+						Customer operator= (const Customer&);
+				};
+				#endif%
 			   
 ~using namespace std^
-	+ The "using" part means to use this or whatever is after it whenever it can. The primary purpose of the "namespace" 
-	  is to not have duplicate variables, functions, classes etc with the same name. For example, if a program were
-	  to include 2 libraries that have the same function name called "print()". The namespace is similar to adding a new 
-	  group name to which you can add functions, and other data so it can be distinguishable. 
+	- 	The "using" part means to use this or whatever is after it whenever it can. The 
+		primary purpose of the "namespace" is to not have duplicate variables, functions, 
+		classes etc with the same name. For example, if a program were to include 2 
+		libraries that have the same function name called "print()". The namespace is 
+		similar to adding a new group name to which you can add functions, and other data 
+		so it can be distinguishable. 
 		   
-				Example:
-                   			namespace ExampleOne 
-		   			{
-						void print()
-						{
-							//DO stuff
-						}
-	   	   			}
-		   			namespace ExampleTwo 
-		   			{
-						void print()
-						{
-							//DO stuff
-						}
-	   	   			}	
+			Example:
+                   		namespace ExampleOne 
+		   		{
+					void print()
+					{
+						//DO stuff
+					}
+	   	   		}
+		 		namespace ExampleTwo 
+		  		{
+					void print()
+					{
+						//DO stuff
+					}
+	   	   		}	
 
 		   With this configuartion, there will not be any naming conflicts and each of the 
 		   functions can be called like so: ExampleOne::print() ExampleTwo::print();
 		   Also, instead of importing everything in the STD namespace, only specific things 
 	 	   in the name space can be imported like so:
 		
-		   		Example:
-		   			using std::string;
-		   			using std::cout;
-		   			using std::cin;
-		   			using std::endl;
-		   			using std::vector;
+		   	Example:
+		   		using std::string;
+		   		using std::cout;
+		   		using std::cin;
+		  		using std::endl;
+		   		using std::vector;
 
 		   std is an abbreviation for standard and is the name of the namespace. In the 
 		   example, the names of the namespace were ExampleOne and ExampleTwo. In
 		   "using namespace std", "std" is the name of the namespace and inside this 
 		   namespace are many things already inside of it such as cout, cin etc.
 		   So without having the line "using namespace std" you would have to write every-
-		   thing in this name space with the :: such as std::cout, std::cin etc. But
-		   if "using namespace std" is included you can just write cout << or cin >>%
+		   thing in this name space with the scope resolution operator :: such as 
+		   std::cout, std::cin etc. But if "using namespace std" is included you can just 
+		   write cout << or cin >>%
 
 ~Memberwise Assignment^
-	-	Memberwise assignment is the assignment of data from one object to another. This is possible through the default copy constructor.
+	-	Memberwise assignment is the assignment of data from one object to another. This 
+		is possible through the default copy constructor.
 		
-				Example:
-					SomeClass a(1, 2), b(4, 3);
-					b = a; //memberwise assignment.
+			Example:
+				SomeClass a(1, 2), b(4, 3);
+				b = a; //memberwise assignment.
+					
+				//Note: If a data type on the right side of the assignment
+				//operator is that of other than the type object on the left
+				//side, in this case SomeClass, then a convert constructor
+				//is called, not a copy constructor.
 
-~Default Copy Constructor^
-	-	When doing memberwise assignment, if a programmer defined copy constructor is not defined, the compiler calls the default copy constructor. This default copy constructor will assign the data of one object to another using memberwise assignment. It is okay to rely on the default copy constructor when there are no members of an object that are pointers. If a pointer is a member of an object, then a programmer defined copy constructor must be used, otherwise it will lead to errors such as when a destructor is called, since both pointers will point to the same location in memory.%
-~Programmer Defined Copy Constructor^
-	-	A programmer defined copy constructor is necessary when memberwise assignment occurs between two objects and the object has a pointer as one of its members. A programmer defined copy constructor must only have one parameter and must be a reference to the object. 
+~Copy Constructor^
+	Default Copy Constructor:
+	-	When doing memberwise assignment, if a programmer defined copy constructor is not 
+		defined, the compiler calls the default copy constructor. This default copy 
+		constructor will assign the data of one object to another using memberwise 
+		assignment. It is okay to rely on the default copy constructor when there are no 
+		members of an object that are pointers. If a pointer is a member of an object, 
+		then a programmer defined copy constructor must be used, otherwise it will lead to 
+		errors such as when a destructor is called, since both pointers will point to the 
+		same location in memory.
+
+	Programmer Defined Copy Constructor:
+	-	A programmer defined copy constructor is necessary when memberwise assignment 
+		occurs between two objects and the object has a pointer as one of its members. 
+	-	A programmer defined copy constructor must only have one parameter and must be a 
+		reference to the object. 
 		
-				Example:
-					SomeClass::SomeClass(SomeClass &obj)
-					{
-						someMember = obj.someMember;
-					}
+			Example:
+				SomeClass::SomeClass(SomeClass &obj)
+				{
+					someMember = obj.someMember;
+				}
 		
-	-	Programmer defined copy constructors are also called whenever an object is being passed as a parameter or when an object is a return type from a function. For this reason, it is very important to have the parameter of the copy constructor to be of reference and not value.
+	-	Programmer defined copy constructors are also called whenever an object is being 
+		passed as a parameter or when an object is a return type from a function. For this 
+		reason, it is very important to have the parameter of the copy constructor to be 
+		of reference and not value.
 
 ~Pointers^ 
-	-	A pointer is the address of a variable in memory. A value that represents the address of a memory location, or holds the address of some variable, is a pointer.
-	-	A pointer variable, or known as just a pointer, is a variable that stores an address. Pointers must also have a type to them and can only strictly point to the same type.
+	-	A pointer is the address of a variable in memory. A value that represents the 
+		address of a memory location, or holds the address of some variable, is a pointer.
+	-	A pointer variable, or known as just a pointer, is a variable that stores an 
+		address. Pointers must also have a type to them and can only strictly point to the 
+		same type.
 				
-				Example:
-					int *ptr; //can only point to a variable address of type int
-					int someVar = 7;
-					int *ptr;
-					ptr = &someVar; //It is important to have the & ampersand in front of the variable.
+			Example:
+				int *ptr; //can only point to a variable address of type int
+				int someVar = 7;
+				int *ptr;
+				ptr = &someVar; //It is important to have the & ampersand in front 
+						//of the variable.
 
 
-Convert Constructor:
--	………
+~Convert Constructor^
+	-	Convert Constructors are called when a different type is passed as a parameter other
+		than the type of the class type. 
+	-	Definition from text: "A constructor that takes a single parameter of a type other 
+		than its class type can be regarded as converting its parameter into an object of 
+		its class."
+
+			Example:
+				class IntClass
+				{
+   				private:
+      					int value;
+   				public:
+      				IntClass (int intValue) { value = intValue; } //convert constructor
+				};
+				
+				//You could call the one-argument constructor with the code:
+ 
+				IntClass intObject(23);
+ 
+				//Instead, you could use the following syntax, in which an object 
+				//of IntClass is initialized with a value of the data type of the 
+				//convert constructor's parameter:
+ 
+				IntClass intObject;
+				intObject = 23;
+ 
+				//This looks like assignment. However, the data type of the value 
+				//on the right side of the assignment operator is different (an int)
+				//than the data type of the value on the left side of the 
+				//assignment operator (an instance of IntClass). yet the statement 
+				//works because of the convert constructor.
+ 
+				IntClass intObject = 23;
+ 
+				//This looks like initialization, or use of the copy constructor. 
+				//However, here too the data type of the value on the right side 
+				//of the assignment operator is different (an int) than the data 
+				//type of the value on the left side of the assignment operator 
+				//(an instance of IntClass). yet this statement also works because 
+				//of the convert constructor.
+
 		

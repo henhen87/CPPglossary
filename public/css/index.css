@@ -6706,38 +6706,96 @@ button.close {
     display: none !important;
   }
 }
-#home h2 {
-  font-size: 30px;
-  color: pink;
+#home {
+  font-family: Arial, Helvetica, sans-serif;
 }
-#home section.frequent {
+#home section.title {
+  padding: 25px 0;
+  border-bottom: solid thin #CCCCCC;
+}
+#home section.title .header {
+  font-size: 30px;
+  color: #75E576;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 700px;
+}
+#home section.title .header img {
+  width: 150px;
+  height: 100px;
+  display: inline-block;
+}
+#home section.title .header img:last-child {
+  width: 130px;
+  height: 90px;
+  margin-left: 15px;
+}
+#home section.search {
+  background-image: url(/img/purple-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   padding: 40px 0;
 }
-#home section.frequent h2 {
-  color: #3d3d3d;
+#home section.search h2 {
+  color: #FFF;
   font-size: 18px;
   text-decoration: underline;
 }
-#home section.frequent .frequent-terms {
+#home section.search .frequent-terms {
   width: 50%;
   display: inline-block;
-  color: blue;
+  color: #FF6347;
 }
-#home section.search {
-  color: green;
-  padding: 40px 0;
+#home section.search form {
+  margin-top: 60px;
 }
 #home section.search form .form-group button {
-  color: #FFF;
-  background-color: tomato;
+  font-weight: bold;
+  background-image: url(/img/person-lookup.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  width: 100px;
+  height: 80px;
+  margin: 0 auto;
+  display: block;
+  border: none;
+  -webkit-box-shadow: 2px 3px 10px -1px grey;
+          box-shadow: 2px 3px 10px -1px grey;
 }
 #home section.search form .form-group .react-autosuggest__container {
   width: 50%;
-  display: inline-block;
+  margin: 0 auto 20px;
+}
+#home section.search form .form-group .react-autosuggest__container .react-autosuggest__suggestions-container ul {
+  padding-left: 5px;
+  margin: 0;
+  color: green;
+  border: solid thin #3D3D3D;
+  background-color: #90EE90;
+}
+#home section.search form .form-group .react-autosuggest__container .react-autosuggest__suggestions-container ul li {
+  list-style-type: none;
+  padding: 5px 0;
 }
 #home section.search form .form-group .react-autosuggest__container input {
+  padding-left: 5px;
+  color: #3D3D3D;
   width: 100%;
 }
 #home section.search form .form-group.search-input {
   position: relative;
+}
+#home section.definition pre {
+  font-family: "Times New Roman", Times, serif;
+  background-color: lightblue;
+  color: green;
+}
+#home section.cartoon {
+  background-image: url(/img/pointer-cartoon.jpg);
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: calc(100vh - 561px);
 }

@@ -59,7 +59,6 @@ class AutoComplete extends Component {
 							)
 						}
 					}
-					console.log('ELL', el)
 					if (terms) {
 						console.log('IF TERMS', terms)
 						this.props.setTerms(terms);
@@ -125,7 +124,7 @@ class AutoComplete extends Component {
 					e.preventDefault();
 					this.getDefinition();
 					
-				}}>Get Definition</button>
+				}}></button>
 			</div>
 		);
 	}
