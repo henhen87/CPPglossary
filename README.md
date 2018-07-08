@@ -7,8 +7,16 @@ AWS Elastic Beanstalk URL:
 
 Future Updates:
 
-  - Users will be able to add definitions to text file using fs writefile.
+  - Store all static assets into AWS S3 and continue to deploy backend on Elastic Beanstalk or migrate to EC2
   
-  - Instead of showing all definitions, a search input will be created to bring up only one definition at a time.
+  - Authentication system
+      
+      -> Users will be able to create an account
+      
+      -> Users will able to pin definitions to the "favorites" section
+      
+  - Utilize MySQL for database
+      
+      -> Migrate MySQL to AWS RDS
   
   - Styling
