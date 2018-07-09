@@ -161,6 +161,7 @@
 				SomeClass s2(2, 1);
 				s2 = s1; //Copy contrcutor not called. This is just memberwise
 					 //assignment
+
 	Default Copy Constructor:
 	-	If a programmer defined copy constructor is not defined, the compiler calls the 
 		default copy constructor. This default copy constructor will assign the data of 
