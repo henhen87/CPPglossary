@@ -136,8 +136,7 @@
 		   write cout << or cin >>
 
 ~Memberwise Assignment^
-	-	Memberwise assignment is the assignment of data from one object to another. This 
-		is possible through the default copy constructor.
+	-	Memberwise assignment is the assignment of data from one object to another.
 		
 			Example:
 				SomeClass a(1, 2), b(4, 3);
@@ -149,19 +148,32 @@
 				//is called, not a copy constructor.
 
 ~Copy Constructor^
+	Copy Constructor:
+	-	Copy constructors are called when an object is BEING CREATED and is initialized
+		with another object of the same class.
+		
+			Example:
+				SomeClass s1(1, 2);
+				SomeClass s2 = s1; //Copy constructor called
+
+			Example 2:
+				SomeClass s1(1, 2);
+				SomeClass s2(2, 1);
+				s2 = s1; //Copy contrcutor not called. This is just memberwise
+					 //assignment
 	Default Copy Constructor:
-	-	When doing memberwise assignment, if a programmer defined copy constructor is not 
-		defined, the compiler calls the default copy constructor. This default copy 
-		constructor will assign the data of one object to another using memberwise 
-		assignment. It is okay to rely on the default copy constructor when there are no 
-		members of an object that are pointers. If a pointer is a member of an object, 
-		then a programmer defined copy constructor must be used, otherwise it will lead to 
-		errors such as when a destructor is called, since both pointers will point to the 
-		same location in memory.
+	-	If a programmer defined copy constructor is not defined, the compiler calls the 
+		default copy constructor. This default copy constructor will assign the data of 
+		one object to another. It is okay to rely on the default copy constructor when 
+		there are no members of an object that are pointers. If a pointer is a member of 
+		an object, then a programmer defined copy constructor must be used, otherwise it 
+		will lead to errors such as when a destructor is called, since both pointers will 
+		point to the same location in memory.
 
 	Programmer Defined Copy Constructor:
-	-	A programmer defined copy constructor is necessary when memberwise assignment 
-		occurs between two objects and the object has a pointer as one of its members. 
+	-	A programmer defined copy constructor is necessary when an object is being created
+		and initliazed to that of a previously declared object of the same class and one
+		of the member variables is a pointer.
 	-	A programmer defined copy constructor must only have one parameter and must be a 
 		reference to the object. 
 		
