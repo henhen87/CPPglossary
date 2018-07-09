@@ -50,6 +50,7 @@ class Home extends Component {
 					</div>
 				</section>
 				<section className="cartoon">
+					<div className="bg" />
 				</section>
 			</div>
 		);

@@ -17,13 +17,24 @@ const getSuggestions = (value, terms) => {
 const getSuggestionValue = suggestion => suggestion.text;
 
 const renderSuggestion = suggestion => {
-	console.log('SUGGESTION', suggestion)
 	return (
-		<div>
+		<div className={suggestion.text}>
 			{suggestion.text}
 		</div>
 	);
 }
+
+// const onSuggestionHighlighted = ({ suggestion }) => {
+// 	if (suggestion) {
+// 		var selected = '.' + suggestion.text;
+// 	}
+// 	console.log('SELECTED', selected);
+// 	let element = document.querySelector(selected);
+// 	console.log(element)
+// 	if (element) {
+// 		element.style.background = "blue";
+// 	}
+// }
 
 class AutoComplete extends Component {
 	constructor(props) {
@@ -116,6 +127,7 @@ class AutoComplete extends Component {
 					suggestions={suggestions}
 					onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
 					onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+					// onSuggestionHighlighted={onSuggestionHighlighted}
 					getSuggestionValue={getSuggestionValue}
 					renderSuggestion={renderSuggestion}
 					inputProps={inputProps}

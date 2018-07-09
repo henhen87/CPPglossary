@@ -88,7 +88,7 @@
 						void view();
 						Customer operator= (const Customer&);
 				};
-				#endif%
+				#endif
 			   
 ~using namespace std^
 	- 	The "using" part means to use this or whatever is after it whenever it can. The 
@@ -133,7 +133,7 @@
 		   So without having the line "using namespace std" you would have to write every-
 		   thing in this name space with the scope resolution operator :: such as 
 		   std::cout, std::cin etc. But if "using namespace std" is included you can just 
-		   write cout << or cin >>%
+		   write cout << or cin >>
 
 ~Memberwise Assignment^
 	-	Memberwise assignment is the assignment of data from one object to another. This 

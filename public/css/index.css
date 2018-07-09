@@ -6710,7 +6710,7 @@ button.close {
   font-family: Arial, Helvetica, sans-serif;
 }
 #home section.title {
-  padding: 25px 0;
+  padding: 15px 0;
   border-bottom: solid thin #CCCCCC;
 }
 #home section.title .header {
@@ -6735,7 +6735,7 @@ button.close {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  padding: 40px 0;
+  padding: 65px 0;
 }
 #home section.search h2 {
   color: purple;
@@ -6795,7 +6795,7 @@ button.close {
   margin: 0 auto 20px;
 }
 #home section.search form .form-group .react-autosuggest__container .react-autosuggest__suggestions-container ul {
-  padding-left: 5px;
+  padding-left: 0;
   margin: 0;
   color: green;
   border: solid thin #3D3D3D;
@@ -6803,7 +6803,10 @@ button.close {
 }
 #home section.search form .form-group .react-autosuggest__container .react-autosuggest__suggestions-container ul li {
   list-style-type: none;
-  padding: 5px 0;
+  padding: 5px 0 0 5px;
+}
+#home section.search form .form-group .react-autosuggest__container .react-autosuggest__suggestions-container ul li:hover {
+  background-color: blue;
 }
 #home section.search form .form-group .react-autosuggest__container input {
   padding-left: 5px;
@@ -6819,9 +6822,13 @@ button.close {
   color: green;
 }
 #home section.cartoon {
+  padding: 20px 0;
+  height: calc(100vh - 601px);
+}
+#home section.cartoon .bg {
   background-image: url(/img/pointer-cartoon.jpg);
-  background-size: auto;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  height: calc(100vh - 571px);
+  height: 100%;
 }
