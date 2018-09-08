@@ -245,5 +245,42 @@
 				//type of the value on the left side of the assignment operator 
 				//(an instance of IntClass). yet this statement also works because 
 				//of the convert constructor.
+~char data type^
+	-	Char data types only hold a single character. When initializing a char data type, 
+		use single quatation marks.
+			Example: 
+				char answer = 'y';
+				string answer = "y";
+	-	For strings (double quotes), there is a null terminator at the end of string (/0);
+		Char only have 1 byte of memory while string can take up more
+
+~float data type^
+	-	Floats are a data type used for when dealing with precision in numbers. When 
+		working with data such as dollar amounts or things that require much precision,
+		a data type which allows fractional values is most suitable.
+	-	float: A regular float is single precision. Floats are stored in memory as a
+		double type, but can be forced to be stored as a float by adding an "F" or "f"
+		at the end.
+	-	double: A double is double precision
+	-	long double: A long double is more than double precision. Long double is stored 
+		as a double but can be forced to be stored as a long double by adding "L" or "l"
+		at the end.
+	-	long numbers can be represented with "E" or 'e', which represents 10 to the power 
+		of "n"
+		
+		Example:
+			float cost = 20.45;
+			float ml = 3.14159;
+
+			//Very lengthy numbers can be shortened with the "E" or "e" syntax.
+			float distance = 1.496E8 //1.496 * 10^8;
+			//is equivalent to
+			float distance = 149600000;
+	
+	-	If assigning a float to a type "int", the numbers after the decimal will be 
+		dropped.
+		
+		Example:
+			int num = 4.43; //4
 
 		
