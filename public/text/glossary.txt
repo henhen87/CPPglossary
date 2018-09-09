@@ -247,10 +247,12 @@
 				//of the convert constructor.
 ~char data type^
 	-	Char data types only hold a single character. When initializing a char data type, 
-		use single quatation marks.
+		use single quatation marks
+
 			Example: 
 				char answer = 'y';
 				string answer = "y";
+
 	-	For strings (double quotes), there is a null terminator at the end of string (/0);
 		Char only have 1 byte of memory while string can take up more
 
