@@ -245,7 +245,7 @@
 				//type of the value on the left side of the assignment operator 
 				//(an instance of IntClass). yet this statement also works because 
 				//of the convert constructor.
-~char data type^
+~char^
 	-	Char data types only hold a single character. When initializing a char data type, 
 		use single quatation marks
 
@@ -256,7 +256,7 @@
 	-	For strings (double quotes), there is a null terminator at the end of string (/0);
 		Char only have 1 byte of memory while string can take up more
 
-~float data type^
+~float^
 	-	Floats are a data type used for when dealing with precision in numbers. When 
 		working with data such as dollar amounts or things that require much precision,
 		a data type which allows fractional values is most suitable.
