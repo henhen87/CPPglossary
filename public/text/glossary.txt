@@ -245,8 +245,13 @@
 				//type of the value on the left side of the assignment operator 
 				//(an instance of IntClass). yet this statement also works because 
 				//of the convert constructor.
+~int^
+	-	int data types are for integer values. They must be whole numbers and cannot be 
+		decimal. Decimals must be stored in float, double or long double. If a float
+		value is initialized to an int data type, all values after decimal will be dropped.
+
 ~char^
-	-	Char data types only hold a single character. When initializing a char data type, 
+	-	char data types only hold a single character. When initializing a char data type, 
 		use single quatation marks
 
 			Example: 
@@ -257,7 +262,7 @@
 		Char only have 1 byte of memory while string can take up more
 
 ~float^
-	-	Floats are a data type used for when dealing with precision in numbers. When 
+	-	floats are a data type used for when dealing with precision in numbers. When 
 		working with data such as dollar amounts or things that require much precision,
 		a data type which allows fractional values is most suitable.
 	-	float: A regular float is single precision. Floats are stored in memory as a
