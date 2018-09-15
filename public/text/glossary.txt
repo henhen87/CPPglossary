@@ -290,4 +290,8 @@
 		Example:
 			int num = 4.43; //4
 
+~double^
+	-	Double is similar to float except double is double the precision whereas float is 
+		single precision.
+
 		
