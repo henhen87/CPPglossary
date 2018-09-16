@@ -294,4 +294,5 @@
 	-	Double is similar to float except double is double the precision whereas float is 
 		single precision.
 
-		
+~long double^
+	-	Long double is similar to double except it has more than double precision
