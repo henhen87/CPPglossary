@@ -259,7 +259,58 @@
 				string answer = "y";
 
 	-	For strings (double quotes), there is a null terminator at the end of string (/0);
-		Char only have 1 byte of memory while string can take up more
+		Char only have 1 byte of memory while string can take up more.
+	- To get the value of a single character cin.get() can be used.
+
+			Example:
+				char ch;
+				cin.get(ch);
+				ch = cin.get();
+				//In both examples above, the character input will be stored in `ch`
+
+	- Related to the problems with strings and how cin passes over whitespace characters,
+		cin cannot be used to capture a single whitespace character. For instance if a program
+		ask user to press [Enter] to continue, cin cannot be used. An alternate can be cin.get(),
+		but this can have some problems.
+
+	//Consider the following example with cin.get() and whitespace characters.
+
+		int main()
+		{
+			int num;
+			char ch;
+			cout << "Enter number: ";
+			cin >> num;
+			cout << endl << "Enter character: "
+			cin.get(ch);
+
+			return 0;
+		}
+		//Similar to the issue with string skipping the second prompt due to whitespace characters but slight difference.
+		//When user enters a number on the first prompt then presses [Enter], the `\n` whitespace
+		//character is stored in the keyboard buffer. Therefore, on the second prompt, the user never gets a chance
+		//to enter the character of their choice. This is due to how cin.get() will automatically collect and assign
+		//any remaining/pending characters in keyboard buffer to the char data type.
+		//To solve this problem, one can use cin.ignore(n, c) function. The parameter `n` represents the numbers of
+		//characters to skip/ignore and `c` represents the first character passed in to skip when it encounters it. 
+		//Depending on which ever comes first, cin.ignore(n, c), will either skip `n` characters or when it gets to
+		//the first occurence of `c`. If no parameters are passed, then cin.ignore() will ignore the very next character
+		//such as a newline after pressing enter on a prompt.
+
+			Example:
+				int main()
+				{
+					int num;
+					char ch;
+					cout << "Enter number: ";
+					cin >> num;
+					cin.ignore(); // Will ignore the very next character, in this case the newline stored in input buffer
+												//when [Enter] is pressed after entering a number
+					cout << endl << "Enter character: "
+					cin.get(ch); //This will now NOT skip since the input buffer is clear and user can type in a character.
+
+					return 0;
+				}
 
 ~float^
 	-	floats are a data type used for when dealing with precision in numbers. When 
@@ -297,3 +348,86 @@
 
 ~long double^
 	-	Long double is  similar to double except it has more than double precision
+
+~strings^
+	-	Strings are part of C++. In C, before C++ Strings, there was only chars/characters.
+		Users would have to define a Character class to capture Character inputs by the user.
+		In C++, with Strings, Users are now able to use the inlcude preprocessor and use cin
+		to capture strings.
+			Examples:
+				#include <iostream>
+				#include <string>
+				using namespace std; //Must have std as well since string is part of std namespace.
+
+				int main()
+				{
+					string name;
+
+					cout << "Enter name: ";
+					cin >> name;
+
+					/*
+						Note: If string requires whitespace characters such as [space], [tab] etc,
+						there will be a problem due to how cin reads data. cin will pass over and
+						ignores any leading whitespace characters. "Elena" / " Elena" is okay but not
+						"E lena". This is because once cin comes to the first nonblank character and 
+						starts reading, it stops reading when it gets to the next whitespace character,
+						thus " Elena" is okay but not " E lena" or "E lena" because cin cannot input strings
+						with embedded spaces. This can be solved by using the getline() function.
+					*/
+
+					return 0;
+				}
+
+				//Following demonstrates problems with whitespace characters
+				#include <iostream>
+				#include <string>
+
+				using namespace std;
+
+				int main()
+				{
+					string love;
+					string person;
+
+					cout << "Enter person you love: ";
+					cin >> love; //"E lena" || " E lena"
+					cout << endl;
+					cout << "Enter person: "; //"Strous"
+					cin >> person;
+
+					cout << "You love " << love << endl;
+					cout << "Person is " << person << endl;
+					return 0;
+				}
+				//output: You love E
+				//output Person is lena
+				//The program skips the second prompt to enter a string (person)
+				//This is due to how cin stop reading at the first embedded space after a
+				//whitespace character. After reading the first character/non-whitespace then
+				//encoutering a whitespace such as [space], the rest of the string will be
+				//stored in the input buffer/keyboard buffer and thus skipping the secong prompt
+				//and automatically storing the left over string in the input when cin stopped reading
+				//into `person` (lena); With getline this will not cause a problem. getline() will
+				//read an entire line including leading and embedded whitespaces and store it in the 
+				//<string> object
+
+				int main()
+				{
+					string love;
+					string person;
+
+					cout << "Enter person you love: ";
+					getline(cin, love); //"E lena" || " E lena"
+					cout << endl;
+					cout << "Enter person: "; //"Strous"
+					getline(cin, person);
+
+					cout << "You love " << love << endl;
+					cout << "Person is " << person << endl;
+					return 0;
+				}
+
+~c-strings^
+	
+
