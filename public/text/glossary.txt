@@ -420,7 +420,7 @@
 					cout << "Enter person you love: ";
 					getline(cin, love); //"E lena" || " E lena"
 					cout << endl;
-					cout << "Enter person: "; //"Strous"
+					cout << "Enter person: "; //"Strouss"
 					getline(cin, person);
 
 					cout << "You love " << love << endl;
